@@ -1,0 +1,11 @@
+.git
+.venv
+venv
+__pycache__
+*.pyc
+.env
+data
+*.sqlite3
+*.log
+server.out
+server.err
