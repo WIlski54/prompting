@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Hacker - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="ws-header">
+    <div class="header-logos">
+      <img src="{{ url_for('static', filename='img/logo-gsm.png') }}" alt="Gesamtschule Meiderich" class="logo-gsm">
+      <div class="header-text">
+        <h1 class="ws-title">Lehrer-Dashboard</h1>
+        <p class="ws-subtitle">Prompt Hacker · KI-Freigaben · Spiel- und Tokenkontrolle</p>
+      </div>
+      <a class="dashboard-logout" href="{{ url_for('lehrer_logout') }}">Logout</a>
+    </div>
+  </header>
+
+  <main class="container dashboard-shell">
+    <section class="dashboard-kpis">
+      <article class="summary-tile"><strong id="kpi-students">0</strong><span>Schüler:innen</span></article>
+      <article class="summary-tile"><strong id="kpi-online">0</strong><span>online</span></article>
+      <article class="summary-tile"><strong id="kpi-pending">0</strong><span>offene Anfragen</span></article>
+      <article class="summary-tile"><strong id="kpi-tokens">0</strong><span>Tokens heute / {{ daily_token_limit }}</span></article>
+    </section>
+
+    <section class="card dashboard-tools" aria-label="Sessiondaten verwalten">
+      <div>
+        <span class="eyebrow">Unterrichtssteuerung</span>
+        <h2 class="screen-title">Spielphase und Session verwalten</h2>
+        <p class="muted">Spiel global für alle steuern oder JSON-Bericht für die Stundennachbereitung sichern und wieder laden.</p>
+      </div>
+      <div class="dashboard-tool-actions">
+        <button id="class-game-toggle" class="btn-secondary" data-action="toggleClassGame" data-unlocked="0" type="button">Spiel global sperren</button>
+        <a class="btn-primary inline-link-btn" href="{{ url_for('api_export_session_report') }}">JSON exportieren</a>
+        <button class="btn-outline" data-action="loadSessionReport" type="button">Bericht laden</button>
+        <button class="btn-danger" data-action="deleteSessionData" type="button">Löschen</button>
+      </div>
+      <input id="session-report-input" type="file" accept="application/json,.json" hidden>
+    </section>
+
+    <section id="session-report-viewer" class="card session-report-viewer" hidden>
+      <div class="section-head compact-head">
+        <div>
+          <span class="eyebrow" id="session-report-eyebrow">Geladener Bericht</span>
+          <h2 class="screen-title" id="session-report-title">Sessionbericht</h2>
+          <p id="session-report-meta" class="muted"></p>
+        </div>
+        <div class="dashboard-tool-actions">
+          <button class="btn-outline" data-action="printSessionReport" type="button">Als PDF drucken</button>
+          <button class="btn-ghost" data-action="closeSessionReport" type="button">Schließen</button>
+        </div>
+      </div>
+      <div id="session-report-content" class="session-report-content"></div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="card">
+        <div class="section-head compact-head">
+          <div>
+            <span class="eyebrow">Freigaben</span>
+            <h2 class="screen-title">Anfragen</h2>
+          </div>
+        </div>
+        <div id="pending-requests" class="request-list"></div>
+      </article>
+
+      <article class="card">
+        <div class="section-head compact-head">
+          <div>
+            <span class="eyebrow">Spielkontrolle</span>
+            <h2 class="screen-title">Schülerübersicht</h2>
+          </div>
+        </div>
+        <div id="student-table" class="student-table"></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    window.TEACHER_ACTION_TOKEN = "{{ teacher_action_token }}";
+    window.MAX_LEVEL_ATTEMPTS = {{ max_level_attempts }};
+  </script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

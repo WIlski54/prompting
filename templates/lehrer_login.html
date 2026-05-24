@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Hacker - Lehrerlogin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="login-page">
+  <main class="login-shell">
+    <section class="login-card compact-login">
+      <div class="login-brand">
+        <img src="{{ url_for('static', filename='img/logo-gsm.png') }}" alt="Gesamtschule Meiderich">
+        <img src="{{ url_for('static', filename='img/WK_8.png') }}" alt="WK">
+      </div>
+      <span class="eyebrow">Lehrerbereich</span>
+      <h1>Dashboard öffnen</h1>
+      {% if error %}
+        <div class="form-error">{{ error }}</div>
+      {% endif %}
+      <form method="post" class="login-form">
+        <label>
+          Passwort
+          <input name="password" type="password" required>
+        </label>
+        <button class="btn-primary" type="submit">Einloggen</button>
+      </form>
+      <a class="teacher-link" href="{{ url_for('login') }}">Zur Schüleranmeldung</a>
+    </section>
+  </main>
+</body>
+</html>
