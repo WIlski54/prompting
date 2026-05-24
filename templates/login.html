@@ -50,7 +50,19 @@
           <span>Ich habe den Hinweis gelesen und arbeite nur mit harmlosen Beispieldaten.</span>
         </label>
 
-        <button class="btn-primary" type="submit">Starten</button>
+        <button class="generate-button" type="submit">
+          <span class="generate-inner">
+            <span class="generate-svgs" aria-hidden="true">
+              <svg viewBox="0 0 256 256" height="1em" width="1em" class="svg-l" xmlns="http://www.w3.org/2000/svg">
+                <path d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.06 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15Z" fill="currentColor"></path>
+              </svg>
+              <svg viewBox="0 0 256 256" height="1em" width="1em" class="svg-s" xmlns="http://www.w3.org/2000/svg">
+                <path d="M240 128a15.79 15.79 0 0 1-10.5 15l-63.44 23.07L143 229.5a16 16 0 0 1-30 0l-23.06-63.44L26.5 143a16 16 0 0 1 0-30l63.44-23.06L113 26.5a16 16 0 0 1 30 0l23.06 63.44L229.5 113a15.79 15.79 0 0 1 10.5 15Z" fill="currentColor"></path>
+              </svg>
+            </span>
+            Starten
+          </span>
+        </button>
       </form>
 
       <a class="teacher-link" href="{{ url_for('lehrer_login') }}">Lehrerbereich</a>
