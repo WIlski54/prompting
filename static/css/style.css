@@ -603,6 +603,74 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.generate-button {
+  cursor: pointer;
+  width: fit-content;
+  margin: 8px auto 0;
+  padding: 0;
+  border: solid 4px #161616;
+  border-top: none;
+  border-radius: 20px;
+  position: relative;
+  overflow: visible;
+  background: #161616;
+  color: inherit;
+  box-shadow:
+    0 4px 10px #00000062,
+    0 10px 40px -10px #000000a6,
+    0 12px 45px -15px #00000071;
+  transition: all 0.3s ease;
+}
+
+.generate-inner {
+  padding: 12px 30px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-top: solid 1px #6f86b4;
+  border-left: solid 1px #111827;
+  border-right: solid 1px #111827;
+  border-bottom: solid 3px #374e72;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #5771a5, #000);
+  color: #fff;
+  text-shadow: 1px 1px #000, 0 0 9px #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -10px 14px rgba(0, 0, 0, 0.55);
+}
+
+.generate-svgs {
+  position: relative;
+  margin-top: 9px;
+  z-index: 10;
+  display: inline-flex;
+}
+
+.generate-svgs > * {
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(1px 1px 0 #000);
+}
+
+.generate-svgs .svg-s {
+  position: absolute;
+  font-size: 0.8rem;
+  left: 20px;
+  top: -4px;
+}
+
+.generate-button:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+.generate-button:focus-visible {
+  outline: 3px solid rgba(0, 106, 179, 0.36);
+  outline-offset: 4px;
+}
+
 .section-head {
   display: flex;
   justify-content: space-between;
