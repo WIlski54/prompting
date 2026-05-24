@@ -3,3 +3,4 @@ flask-socketio>=5.3
 python-dotenv>=1.0
 google-genai>=2.0
 gunicorn>=21.2
+simple-websocket>=1.0
